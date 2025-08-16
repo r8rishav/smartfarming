@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 AgroSense - Smart Farming Technologies</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🌾 AgroSense</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research">Research Paper</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a id="dashboard-link" href="http://10.182.227.97" target="_blank"><b>Project Dashboard</b></a></a></li>
+            </ul>
+             <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>A Brief Review on Smart Farming Technologies for Precision Agriculture</h1>
+                <p>Exploring the future of farming with IoT, AI, and Machine Learning to enhance productivity and sustainability.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Smart Farming Projects</h2>
+            <div class="project-cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b" alt="Smart Irrigation System">
+                    <div class="card-content">
+                        <h3>Smart Irrigation System</h3>
+                        <p>An IoT-based system to optimize water usage by monitoring soil moisture and weather conditions in real-time.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.ibb.co/TBHYZ7dz/Google-AI-Studio-2025-07-28-T05-32-18-280-Z.png" alt="Crop Health Monitoring">
+                    <div class="card-content">
+                        <h3>Crop Health Monitoring</h3>
+                        <p>Utilizing drone imagery and AI to detect diseases and pests in crops at an early stage.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.ibb.co/35gJPQqp/Google-AI-Studio-2025-07-28-T05-38-12-299-Z.png" alt="Automated Seeding and Weeding">
+                    <div class="card-content">
+                        <h3>Automated Seeding & Weeding</h3>
+                        <p>Robotic solutions for precise seeding and autonomous weeding to reduce manual labor and improve efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="research-section">
+            <h2>Our Research Publication</h2>
+            <div class="research-paper">
+                <h3>A Brief Review on Smart Farming Technologies for Precision Agriculture</h3>
+                <p class="authors">
+                    Rishav Raj, Amar Pal, Arijit Ghosh, Soumik Kumar Kundu, Samit Karmakar
+                </p>
+                <p class="affiliation">
+                    Institute of Engineering & Management, Kolkata, India
+                </p>
+                <div class="research-buttons">
+                    <a href="https://docs.google.com/document/d/1VmYpOMF7mexZYNSxEPLdlgdohieaSv9p/edit?usp=sharing&ouid=116849439300060371465&rtpof=true&sd=true" class="btn">View Publication</a>
+                    <a href="https://drive.google.com/uc?export=download&id=1ZYcVXPa-SMFeQr5aSHQQfD_LdRS1-twy" class="btn" download>Download PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team-section">
+    <h2>Meet the Team</h2>
+    <div class="team-members">
+        <!-- <div class="team-member"> -->
+           <a href="https://rishavrajportfolio.web.app" target="_blank" class="team-member-link">
+    <div class="team-member portfolio-card">
+        <h4>Rishav Raj</h4>
+        <p>Rishav.Raj2022@iem.edu.in</p>
+        <span class="portfolio-text"><i>portfolio</i></span>
+    </div>
+</a>
+        <!-- </div> -->
+        <div class="team-member">
+            <h4>Amar Pal</h4>
+            <p>mahi7828558@gmail.com</p>
+        </div>
+        <div class="team-member">
+            <h4>Arijit Ghosh</h4>
+            <p>Arijit.Ghosh2022@iem.edu.in</p>
+        </div>
+        
+        <div class="team-member">
+            <h4>Soumik Kumar Kundu</h4>
+            <p class="role">Project Supervisor</p>
+            <p>soumik.kundu@iem.edu.in</p>
+        </div>
+        <div class="team-member">
+            <h4>Samit Karmakar</h4>
+            <p class="role">Project Supervisor</p>
+            <p>samit.karmakar@iem.edu.in</p>
+        </div>
+    </div>
+    
+    <div class="mentor-acknowledgement">
+        <p>This project was completed under the valuable guidance of our mentors, Prof. Soumik Kumar Kundu and Prof. Samit Karmakar.</p>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 🌾 AgroSense. All Rights Reserved.</p>
+    </footer>
+
+    <div class="chatbot-container">
+        <div class="chat-bubble" id="chat-bubble">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <h3>AgroBot</h3>
+                <button id="close-chat">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message ai">Hi! I'm AgroBot — your assistant for this smart farming project. What would you like to know?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyB2F5F73DtYDtKMZ68zn0unQfw1T4C7XUE",
+    authDomain: "agrosense-c9cfa.firebaseapp.com",
+    projectId: "agrosense-c9cfa",
+    storageBucket: "agrosense-c9cfa.firebasestorage.app",
+    messagingSenderId: "1081214767691",
+    appId: "1:1081214767691:web:bb31a39d4471eba4ec33ce",
+    measurementId: "G-0RNELEHDMZ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>
