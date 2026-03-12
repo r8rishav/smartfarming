@@ -16,6 +16,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#research">Research Paper</a></li>
+                <li><a href="#predictor">Crop Predictor</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a id="dashboard-link" href="http://10.182.227.97" target="_blank"><b>Project Dashboard</b></a></a></li>
             </ul>
@@ -74,6 +75,41 @@
                     <a href="https://docs.google.com/document/d/1VmYpOMF7mexZYNSxEPLdlgdohieaSv9p/edit?usp=sharing&ouid=116849439300060371465&rtpof=true&sd=true" class="btn">View Publication</a>
                     <a href="https://drive.google.com/uc?export=download&id=1ZYcVXPa-SMFeQr5aSHQQfD_LdRS1-twy" class="btn" download>Download PDF</a>
                 </div>
+            </div>
+        </section>
+
+
+        <section id="predictor" class="predictor-section">
+            <h2>Crop Recommendation Model</h2>
+            <div class="predictor-card">
+                <p class="predictor-note">Enter farm conditions to get a crop recommendation from the trained Random Forest model.</p>
+                <form id="crop-form" class="crop-form">
+                    <div class="form-grid">
+                        <label>Temperature (°C)
+                            <input type="number" id="temperature" step="0.1" required>
+                        </label>
+                        <label>Humidity (%)
+                            <input type="number" id="humidity" step="0.1" required>
+                        </label>
+                        <label>Soil pH
+                            <input type="number" id="ph" step="0.1" required>
+                        </label>
+                        <label>Water Availability
+                            <input type="number" id="water-availability" step="0.1" required>
+                        </label>
+                        <label>Season
+                            <select id="season" required>
+                                <option value="summer">Summer</option>
+                                <option value="monsoon">Monsoon</option>
+                                <option value="winter">Winter</option>
+                                <option value="autumn">Autumn</option>
+                                <option value="spring">Spring</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Predict Crop</button>
+                </form>
+                <div id="prediction-result" class="prediction-result" aria-live="polite"></div>
             </div>
         </section>
 

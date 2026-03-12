@@ -211,3 +211,50 @@ This project was completed under the valuable guidance of our mentors and projec
 * Mr. Soumik Kumar Kundu
 
 * Mr. Samit Karmakar
+
+
+## 🤖 Crop Recommendation ML API
+
+This repository now includes a Python backend (`backend/app.py`) that reproduces your notebook pipeline using a **RandomForestClassifier** and exposes it as an API.
+
+### Backend setup
+
+1. Create a virtual environment and install dependencies:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r backend/requirements.txt
+   ```
+2. Add your dataset CSV at:
+   - `backend/data/Crop_recommendation.csv` **or**
+   - set `CROP_DATASET_PATH` to another file path.
+3. Run the API server:
+   ```bash
+   python backend/app.py
+   ```
+
+### API endpoints
+
+- `GET /api/health` → model/dataset status
+- `POST /api/predict-crop` → crop prediction
+
+Example payload:
+```json
+{
+  "temperature": 35.0,
+  "humidity": 80.0,
+  "ph": 6.5,
+  "water_availability": 155.0,
+  "season": "winter"
+}
+```
+
+### Website integration
+
+A new **Crop Recommendation Model** section is added to the homepage. It submits form inputs to:
+- `http://localhost:8000/api/predict-crop` (default)
+
+If your backend is deployed elsewhere, set a global before loading `script.js`:
+```html
+<script>window.CROP_API_BASE = "https://your-api-domain";</script>
+```
