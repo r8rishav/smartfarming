@@ -126,6 +126,44 @@ document.addEventListener('DOMContentLoaded', () => {
         return data.candidates[0].content.parts[0].text;
     }
 
+
+    // --- Crop Predictor ---
+    const cropForm = document.getElementById('crop-form');
+    const predictionResult = document.getElementById('prediction-result');
+    const CROP_API_BASE = window.CROP_API_BASE || 'http://localhost:8000';
+
+    if (cropForm) {
+        cropForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            predictionResult.textContent = 'Predicting...';
+
+            const payload = {
+                temperature: parseFloat(document.getElementById('temperature').value),
+                humidity: parseFloat(document.getElementById('humidity').value),
+                ph: parseFloat(document.getElementById('ph').value),
+                water_availability: parseFloat(document.getElementById('water-availability').value),
+                season: document.getElementById('season').value
+            };
+
+            try {
+                const response = await fetch(`${CROP_API_BASE}/api/predict-crop`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Unable to predict crop.');
+                }
+
+                predictionResult.textContent = `Recommended crop: ${String(data.predicted_crop).toUpperCase()}`;
+            } catch (error) {
+                predictionResult.textContent = `Prediction failed: ${error.message}`;
+            }
+        });
+    }
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

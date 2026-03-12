@@ -439,3 +439,50 @@ footer {
     background-color: #f0f0f0;
     color: #1b4d21 !important;
 }
+.predictor-section {
+    background: var(--card-bg-color);
+}
+
+.predictor-card {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.predictor-note {
+    margin-bottom: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.crop-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-weight: 600;
+}
+
+.crop-form input,
+.crop-form select {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.65rem 0.8rem;
+    background: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.prediction-result {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
