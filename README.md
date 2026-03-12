@@ -369,3 +369,26 @@ curl https://smartfarming-api.onrender.com/api/health
 
 If the health endpoint works and the form predicts crops, your site is fully live.
 
+## 🧭 Publish to your GitHub first (step-by-step)
+
+I cannot directly log in to your GitHub account from this environment, but you can publish in 3 minutes with these commands:
+
+```bash
+git status
+git remote remove origin 2>/dev/null || true
+git remote add origin https://github.com/<your-username>/smartfarming.git
+git push -u origin main
+```
+
+After push, this repo includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml` that deploys the `public/` folder to GitHub Pages automatically on every push to `main`.
+
+### Turn on GitHub Pages in repository settings
+
+1. Open your GitHub repo → **Settings** → **Pages**.
+2. Under **Build and deployment**, choose **Source: GitHub Actions**.
+3. Push to `main` (or run the workflow manually from the **Actions** tab).
+4. Your live frontend URL will be:
+   - `https://<your-username>.github.io/smartfarming/`
+
+> Note: this publishes only the frontend. The ML Flask backend must be hosted separately (Render/Railway/Fly/etc.) and connected with `window.CROP_API_BASE`.
+
