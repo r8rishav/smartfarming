@@ -211,3 +211,161 @@ This project was completed under the valuable guidance of our mentors and projec
 * Mr. Soumik Kumar Kundu
 
 * Mr. Samit Karmakar
+
+
+## 🤖 Crop Recommendation ML API
+
+The website includes a Python backend (`backend/app.py`) that loads your crop dataset, trains a `RandomForestClassifier`, and serves predictions to the frontend form.
+
+### Run locally (frontend + ML API)
+
+1. **Clone the repository and enter it:**
+   ```bash
+   git clone https://github.com/<your-username>/smartfarming.git
+   cd smartfarming
+   ```
+2. **Prepare and start backend API:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r backend/requirements.txt
+   ```
+3. **Provide dataset CSV:**
+   - Preferred path: `backend/data/Crop_recommendation.csv`
+   - Or set an environment variable:
+     ```bash
+     export CROP_DATASET_PATH=/absolute/path/to/Crop_recommendation.csv
+     ```
+4. **Run the backend server:**
+   ```bash
+   python backend/app.py
+   ```
+   The API runs at `http://localhost:8000`.
+
+5. **Run frontend in another terminal:**
+   ```bash
+   python -m http.server 4173 --directory public
+   ```
+   Open `http://localhost:4173` and test the Crop Recommendation form.
+
+---
+
+## 🌍 Can I host everything on GitHub?
+
+Short answer: **GitHub Pages can host only static frontend files**. Your ML backend (Flask + scikit-learn) must run on a backend host.
+
+### Recommended deployment split
+
+- **Frontend (`public/*`)** → GitHub Pages
+- **Backend (`backend/app.py`)** → Render / Railway / Fly.io / any Python host
+
+### A) Deploy frontend on GitHub Pages
+
+1. Push the repository to GitHub.
+2. In GitHub, go to **Settings → Pages**.
+3. Set source to:
+   - **Deploy from a branch**
+   - Branch: `main` (or your default branch)
+   - Folder: `/public`
+4. Save and wait for deployment.
+5. Your frontend URL will be like:
+   `https://<username>.github.io/smartfarming/`
+
+### B) Deploy backend (example: Render)
+
+1. Create a new **Web Service** on Render and connect this repo.
+2. Configure:
+   - **Root Directory:** `backend`
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `python app.py`
+3. Add environment variable (if dataset path is custom):
+   - `CROP_DATASET_PATH=/opt/render/project/src/backend/data/Crop_recommendation.csv`
+4. Deploy and copy backend URL, e.g. `https://smartfarming-api.onrender.com`
+
+### C) Connect frontend to deployed backend
+
+Before `public/script.js` is loaded, define:
+
+```html
+<script>
+  window.CROP_API_BASE = "https://smartfarming-api.onrender.com";
+</script>
+```
+
+Then deploy frontend again. Crop predictions will use your hosted API.
+
+### API endpoints
+
+- `GET /api/health`
+- `POST /api/predict-crop`
+
+Example `POST` payload:
+
+```json
+{
+  "temperature": 35.0,
+  "humidity": 80.0,
+  "ph": 6.5,
+  "water_availability": 155.0,
+  "season": "winter"
+}
+```
+
+## 🚀 Go live (recommended: Firebase + Render)
+
+If your goal is to make the site publicly accessible quickly, use this production setup:
+
+- **Frontend (this website)** → Firebase Hosting
+- **ML Backend (`backend/app.py`)** → Render Web Service
+
+### 1) Deploy backend to Render
+
+1. Push your repo to GitHub.
+2. In Render, create **New Web Service** from this repo.
+3. Use these settings:
+   - **Root Directory:** `backend`
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `python app.py`
+4. Make sure your dataset exists at `backend/data/Crop_recommendation.csv` in the repo,
+   or set `CROP_DATASET_PATH` in Render environment variables.
+5. After deploy, copy URL (example):
+   `https://smartfarming-api.onrender.com`
+
+### 2) Point frontend to backend URL
+
+In `public/index.html`, add this **before** loading `script.js`:
+
+```html
+<script>
+  window.CROP_API_BASE = "https://smartfarming-api.onrender.com";
+</script>
+```
+
+### 3) Deploy frontend to Firebase Hosting
+
+From project root:
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+# choose existing project or create one
+# public directory: public
+# single-page app rewrite: Yes
+firebase deploy
+```
+
+Firebase will return your live URL, for example:
+`https://your-project-id.web.app`
+
+### 4) Verify production endpoints
+
+- Open your live website and submit the Crop form.
+- Directly test backend health:
+
+```bash
+curl https://smartfarming-api.onrender.com/api/health
+```
+
+If the health endpoint works and the form predicts crops, your site is fully live.
+
